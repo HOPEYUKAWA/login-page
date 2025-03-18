@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOPE STAFF ログイン</title>
+    <title>ログイン ページ</title>
 
-    <!-- 🔥 Importação correta do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
@@ -59,7 +58,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>ログイン</h2>
+        <h2>ログイン ページ</h2>
         <input type="text" id="username" placeholder="ユーザー" required>
         <input type="password" id="password" placeholder="パスワード" required>
         <button onclick="login()">ログイン</button>
@@ -67,7 +66,6 @@
     </div>
 
     <script>
-        // 🔥 Configuração correta do Firebase
         var firebaseConfig = {
             apiKey: "AIzaSyBqHvyHU_Htd9KMxcI4AqMuoXelp0gAxD4",
             authDomain: "hope-system-1.firebaseapp.com",
@@ -78,11 +76,8 @@
             measurementId: "G-Z637TSY9SY"
         };
 
-        // Inicializa o Firebase corretamente
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
-
-        console.log("✅ Firebase inicializado com sucesso!");
 
         function login() {
             var username = document.getElementById('username').value.trim();
@@ -97,8 +92,8 @@
 
             db.collection("usuarios").doc(username).get().then((doc) => {
                 if (doc.exists && doc.data().senha === password) {
-                    console.log("✅ Login bem-sucedido! Redirecionando...");
-                    window.location.href = doc.data().link; // 🔗 Redireciona para o link do usuário
+                    localStorage.setItem("usuarioLogado", username); // Salva o usuário logado
+                    window.location.href = "dashboard.html"; // Redireciona para a página personalizada
                 } else {
                     message.style.color = "red";
                     message.textContent = "Usuário ou senha inválidos!";
