@@ -36,6 +36,7 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
             width: 100%;
@@ -59,8 +60,8 @@
 <body>
     <div class="login-container">
         <h2>ログイン ページ</h2>
-        <input type="text" id="username" placeholder="Usuário" required>
-        <input type="password" id="password" placeholder="Senha" required>
+        <input type="text" id="username" placeholder="ユーザー" required>
+        <input type="password" id="password" placeholder="パスワード" required>
         <button onclick="login()">ログイン</button>
         <div id="message" class="message"></div>
     </div>
