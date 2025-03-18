@@ -93,7 +93,7 @@
             db.collection("usuarios").doc(username).get().then((doc) => {
                 if (doc.exists && doc.data().senha === password) {
                     localStorage.setItem("usuarioLogado", username); // Salva o usuário logado
-                    window.location.href = "dashboard.html"; // Redireciona para a página personalizada
+                    window.location.href = "dashboard.html"; // 🔗 Agora redireciona para o dashboard!
                 } else {
                     message.style.color = "red";
                     message.textContent = "Usuário ou senha inválidos!";
