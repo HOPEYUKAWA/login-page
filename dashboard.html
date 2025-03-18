@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ダッシュボード</title>
 
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
@@ -26,32 +27,37 @@
             width: 300px;
             text-align: center;
         }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
         button {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: none;
             border-radius: 4px;
-            background-color: #007bff;
+            background-color: #66b3ff; /* Azul Claro */
             color: white;
             font-size: 16px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #4d94ff; /* Azul um pouco mais escuro ao passar o mouse */
         }
     </style>
 </head>
 <body>
     <div class="dashboard-container">
         <h2>ダッシュボード</h2>
-        <button id="btnArquivos">📂 Meus Arquivos</button>
-        <button id="btnAtualizar">📝 Atualizar Meus Dados</button>
-        <button id="btnVazio1">🔧 Em breve</button>
-        <button id="btnVazio2">🔧 Em breve</button>
+        <button id="btnArquivos">📂 私のファイル</button>
+        <button id="btnAtualizar">📝 情報を更新</button>
+        <button id="btnVazio1">🔧 近日公開</button>
+        <button id="btnVazio2">🔧 近日公開</button>
     </div>
 
     <script>
+        // Configuração do Firebase
         var firebaseConfig = {
             apiKey: "AIzaSyBqHvyHU_Htd9KMxcI4AqMuoXelp0gAxD4",
             authDomain: "hope-system-1.firebaseapp.com",
@@ -65,6 +71,7 @@
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
 
+        // Obtém o usuário logado do localStorage
         var usuarioLogado = localStorage.getItem("usuarioLogado");
 
         if (!usuarioLogado) {
